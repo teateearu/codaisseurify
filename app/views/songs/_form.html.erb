@@ -1,10 +1,6 @@
-<%= form_for @song do |f| %>
+<%= form_for [@artist, @artist.songs.build] do |f| %>
 
-  <ul>
-    <% @song.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
+
 
   <%= f.label :title %>
   <%= f.text_field :title %>
@@ -12,6 +8,6 @@
   <%= f.label :year %>
   <%= f.number_field :year %>
 
-  <%= f.submit (@song.new_record? ? "Create" : "Update") %>
+  <%= f.submit%>
 
 <% end %>

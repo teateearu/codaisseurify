@@ -6,10 +6,10 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
   end
   def destroy
-  @artist = Artist.find(params[:id])
+    @artist = Artist.find(params[:id])
 
-  @artist.destroy
+    @artist.destroy
 
-  redirect_to artists_path
-end
+    redirect_to artists_path
+  end
 end

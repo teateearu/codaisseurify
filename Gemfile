@@ -39,6 +39,7 @@ gem 'jquery-rails', '~> 4.3.1'
 gem 'carrierwave', '0.11.2'
 
 gem 'cloudinary', '1.2.3'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do

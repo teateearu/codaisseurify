@@ -1,0 +1,56 @@
+body {
+    background-color: #333;
+    background-image: url(http://res.cloudinary.com/teateearu/image/upload/v1510500654/nightsky_ldblks.gif);;
+    font-family: 'Roboto Condensed', sans-serif;
+    line-height: 1;
+    font-size: 14px;
+}
+h1 {
+    color: white;
+}
+h3 {
+    color: white;
+}
+h2 {
+    color: #ff9999;
+}
+h4 {
+    color: white;
+}
+h5 {
+    color: white;
+}
+h6 {
+    color: white;
+}
+p {
+    color: white;
+}
+
+a:link {
+    color: #ff9999;
+}
+
+a:visited {
+    color: #ccff99;
+}
+
+a:hover {
+    color: #ff3333;
+}
+
+a:active {
+    color: blue;
+}
+.artist-img {
+    border: 2px dotted #666666;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+.left {
+    position: absolute;
+    left: 50px;
+}
+.marker {
+  font-family: 'Permanent Marker', cursive;
+}

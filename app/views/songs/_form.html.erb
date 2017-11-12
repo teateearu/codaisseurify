@@ -1,12 +1,14 @@
+<%= stylesheet_link_tag "styles.css" %>
+
 <%= form_for [@artist, @artist.songs.build] do |f| %>
 
 
 
-  <%= f.label :title %>
+  <h5><%= f.label :title %>
   <%= f.text_field :title %>
 
   <%= f.label :year %>
-  <%= f.number_field :year %>
+  <%= f.number_field :year %></h5>
 
   <%= f.submit%>
 

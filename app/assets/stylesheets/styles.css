@@ -52,5 +52,11 @@ a:active {
     left: 50px;
 }
 .marker {
-  font-family: 'Permanent Marker', cursive;
+    font-family: 'Permanent Marker', cursive;
+}
+.blacktext {
+    color: black;
+}
+.whitetext {
+    color: white;
 }

@@ -1,30 +1,30 @@
 <%= stylesheet_link_tag "styles.css" %>
 <div class="container-fluid text-center">
-<h1><%= @artist.name %></h1>
-<br>
-<p><%= image_tag @artist.remote_image_url %></p>
-<br>
+  <h1><%= @artist.name %></h1>
+  <br>
+  <p><%= image_tag @artist.remote_image_url %></p>
+  <br>
 
-<p>Alive: <%= @artist.alive %></p>
+  <p><%= @artist.bio %></p>
 
-<div>
-  <h2>Songs: </h2>
-  <% @artist.songs.each do |song| %>
-    <p>"<%= song.title %>"<p>
-    <p>Year of release: <%= song.year %><p>
-    <h6><%= link_to "[Delete this song]", [song.artist, song], method: :delete, data: { confirm: 'Are you sure?' } %></h6>
+  <div>
+    <h2>Famous christmas songs: </h2>
     <br>
-      <% end %>
-</div>
-<br>
-<div>
-  <h4>Add Song: </h4>
-    <%= render "songs/form" %>
-</div>
+    <% @artist.songs.each do |song| %>
+      <p>"<%= song.title %>"<p>
+      <p>Year of release: <%= song.year %><p>
+      <h6><%= link_to "[Delete this song]", [song.artist, song], method: :delete, data: { confirm: 'Are you sure?' } %></h6>
+      <br>
+    <% end %>
+  </div>
+  <br>
+  <div>
+    <h4>Add Song: </h4>
+      <%= render "songs/form" %>
+  </div>
 
-<br>
-<%= link_to "[Delete this artist]", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %>
-
+  <br>
+  <%= link_to "[Delete this artist]", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
 <br>
 <p class="container-fluid text-center"><%= link_to "[All Artists]", root_path %></p>

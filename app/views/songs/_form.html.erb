@@ -2,13 +2,10 @@
 
 <%= form_for [@artist, @artist.songs.build] do |f| %>
 
-
-
-  <h5><%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :year %>
-  <%= f.number_field :year %></h5>
+  <p class="whitetext"><%= f.label :title %></p>
+  <p class="blacktext"><%= f.text_field :title %></p>
+  <p class="whitetext"><%= f.label :year %></p>
+  <p class="blacktext"><%= f.number_field :year %></p>
 
   <%= f.submit%>
 

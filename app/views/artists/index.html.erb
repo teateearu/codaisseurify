@@ -1,6 +1,39 @@
-<h1> Artists </h1>
+  <style>
+  body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+      background-color: #8B0000;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
 
-<% @artists.each do |artist| %>
-   <%= image_tag artist.remote_image_url %>
-  <%= link_to artist.name, artist_path(artist.id) %>
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  </style>
+<body>
+  <div class="container-fluid text-center">
+<h1> Welcome to Christmas Codaisseurify! </h1>
+<!-- Grid -->
+<br>
+<h3 class="margin">Artists:</h3><br>
+  <% @artists.each do |artist| %>
+  <div class="column">
+    <div class="col-sm-4">
+      <h2><%= link_to artist.name, artist_path(artist.id) %></h2>
+      <p><%= image_tag artist.remote_image_url %></p>
+
+    </div>
+  </div>
 <% end %>
+</div>
+
+</body>
+
+
+
+
+</body>
+</html>

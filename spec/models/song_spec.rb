@@ -11,4 +11,17 @@ RSpec.describe Song, type: :model do
       expect(song.artist).to eq(artist)
     end
   end
+
+  describe "validations" do
+    it "is invalid without a title" do
+      song = Song.new(title: "")
+      song.valid?
+      expect(song.errors).to have_key(:title)
+    end
+    it "is invalid without a year" do
+      song = Song.new(year: "")
+      song.valid?
+      expect(song.errors).to have_key(:year)
+    end
+  end
 end

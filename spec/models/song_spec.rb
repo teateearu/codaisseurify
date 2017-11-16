@@ -23,5 +23,10 @@ RSpec.describe Song, type: :model do
       song.valid?
       expect(song.errors).to have_key(:year)
     end
+    it "year has to be 4 numbers" do
+      song = Song.new(year: 20177)
+      song.valid?
+      expect(song.errors).to have_key(:year)
+    end
   end
 end

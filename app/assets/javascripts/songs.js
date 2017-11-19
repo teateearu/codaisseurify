@@ -1,50 +1,67 @@
 function createSong(title, year) {
-  var artistId = $('ul').data('id');
   var newSong = { title: title, year: year };
 
   $.ajax({
     type: "POST",
-    url: "/artists/" + artistId + "/songs.json",
+    url: "/api/artists/" + artist_id + "/songs",
     data: JSON.stringify({
-        song: newSong
+      song: newSong
     }),
     contentType: "application/json",
     dataType: "json"
   })
-
   .done(function(data) {
-        var rowId = data.id;
+    var rowId = data.id;
 
-        var $delBtn = $('<a href="#" class="btn btn-default" id="del-button">Delete</a>');
+    var $delBtn = $('<a href="#" class="btn btn-default" id="del-button">Delete</a>');
 
-        var tableRow = $('<tr class="song"></tr>')
-          .attr('data-id', rowId)
-          .append($('<td>').append($('<p>')).html(name))
-          .append($('<td>').append($('<p>')).html(year))
-          .append($('<td>').append($delBtn.bind('click', deleteSong )));
+    var tableRow = $('<tr class="song"></tr>')
+      .attr('data-id', rowId)
+      .append($('<td>').append($('<p>')).html(title))
+      .append($('<td>').append($('<p>')).html(year))
+      .append($('<td>').append($delBtn.bind('click', deleteSong )));
 
-        $('#table').find($('tr')).first().after(tableRow);
-      })
-      .fail(function(error) {
+    $('#table').find($('tr')).first().after(tableRow);
+  })
+  .fail(function(error) {
+    console.log(error);
 
-        for (var key in error.responseJSON.errors ){
-          showError(error.responseJSON.errors[key]);
-        };
+    error_message = error.responseJSON.title[0];
+    showError(error_message);
+  });
+}
 
-      });
+function showError(message) {
+  var errorHelpBlock = $('<span class="help-block"></span>')
+    .attr('id', 'error_message')
+    .text(message);
+
+    $("#formgroup-title")
+    .addClass("has-error")
+    .append(errorHelpBlock);
   }
 
-  function clearVals(name, year) {
-    name.val(null);
-    year.val(null);
-  }
+ function submitSong(event) {
+   event.preventDefault();
+   createsong($("#song_title").val());
+   $("#song_title").val(null);
+ }
 
-  function submitSong(event){
-    event.preventDefault();
-    resetErrors();
-    var songName = $('#song-name');
-    var songYear = $('#song-year');
+ function deleteSong(songId) {
+   $.ajax({
+     type: "DELETE",
+     url: "/artists/" + artistId + "/songs/" + songId + ".json",
+     contentType: "application/json",
+     dataType: "json"
+   })
+   .done(function(data) {
+     $('tr[data-id="'+songId+'"]').remove();
+   });
+ }
 
-    addSong(songName.val(), songYear.val());
-    clearVals(songName, songYear);
-  }
+
+
+ $(document).ready(function() {
+   $("form").bind('submit', submitSong);
+   $(".delete-song").bind('click', deleteSong);
+ });

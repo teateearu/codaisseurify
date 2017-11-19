@@ -3,11 +3,7 @@ class Api::SongsController < ApplicationController
     song = Song.new(song_params)
 
   if song.save
-    render status: 201, json: {
-      message: "Song successfully created",
-      artist: @artist,
-      song: song
-    }.to_json
+    render status: 200, json: song
   else
     render status: 422, json: {
       message: "Song could not be created",

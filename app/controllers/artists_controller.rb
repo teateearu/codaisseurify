@@ -6,7 +6,7 @@ class ArtistsController < ApplicationController
     if params[:order] == 'artists_asc'
       @artists = Artist.all.order(:name)
     end
-    
+
   end
 
   def show

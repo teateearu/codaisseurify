@@ -5,10 +5,12 @@ class Api::SongsController < ApplicationController
   if song.save
     render status: 201, json: {
       message: "Song successfully created",
+      artist: @artist,
       song: song
     }.to_json
   else
     render status: 422, json: {
+      message: "Song could not be created",
       errors: song.errors
     }.to_json
   end
@@ -19,6 +21,7 @@ class Api::SongsController < ApplicationController
 
     render status: 200, json: {
       message: "Song successfully deleted"
+      artist: @artist,
     }.to_json
   end
 

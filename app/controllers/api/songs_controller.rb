@@ -1,4 +1,11 @@
 class Api::SongsController < ApplicationController
+  before_action :set_artist, only: [:index, :create, :destroy]
+  def index
+    render status: 200, json: {
+      songs: @artist.songs
+    }.to_json
+  end
+  
   def create
     song = Song.new(song_params)
 

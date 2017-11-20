@@ -17,17 +17,25 @@
     <br>
     <table id="listSongs" >
     <% @artist.songs.each do |song| %>
-      <tr>"<%= song.title %>"<tr>
-      <tr>Year of release: <%= song.year %><tr>
-      <h6><%= link_to "[Delete this song]", [song.artist, song], method: :delete, data: { confirm: 'Are you sure?' } %></h6>
+      <tr>"<%= song.title %>"</tr>
+      <tr>Year of release: <%= song.year %></tr>
+      <td><% button_tag "[Delete this song]", class: "btn btn-default", id: "deleteButton", onclick: "deleteSong(" + song.artist.id.to_s + ", " + song.id.to_s + ")" %></td>
+
       <br>
     <% end %>
   </table>
   </div>
   <br>
   <div id="songForm">
-    <h4>Add Song: </h4>
-      <%= render "songs/form" %>
+    <label>Title:</label>
+    <input id="addTitle" type="text" class="form-control" placeholder="Song title">
+
+    <label>Year:</label>
+    <input id="addYear" type="number" class="form-control" placeholder="2017">
+  <hr>
+    <div>
+      <%= button_tag "Create Song", class: "btn btn-default", id: "saveButton", onclick: 'createSong(' + @artist.id.to_s + ')' %>
+   </div>
   </div>
 
   <br>

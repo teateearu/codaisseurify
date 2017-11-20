@@ -15,21 +15,32 @@
   <div>
     <h2>Famous christmas songs: </h2>
     <br>
+    <table id="listSongs" >
     <% @artist.songs.each do |song| %>
-      <p>"<%= song.title %>"<p>
-      <p>Year of release: <%= song.year %><p>
-      <h6><%= link_to "[Delete this song]", [song.artist, song], method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></h6>
+      <tr>"<%= song.title %>"<tr>
+      <tr>Year of release: <%= song.year %><tr>
+      <h6><%= link_to "[Delete this song]", [song.artist, song], method: :delete, data: { confirm: 'Are you sure?' } %></h6>
       <br>
     <% end %>
+  </table>
   </div>
   <br>
   <div>
     <h4>Add Song: </h4>
-      <%= render "songs/form" %>
+    <%= form_for [@artist, @artist.songs.build] do |f| %>
+
+      <p class="whitetext"><%= f.label :title %></p>
+      <p class="blacktext"><%= f.text_field :title %></p>
+      <p class="whitetext"><%= f.label :year %></p>
+      <p class="blacktext"><%= f.number_field :year %></p>
+
+      <%= f.submit%>
+
+    <% end %>
   </div>
 
   <br>
-  <%= link_to "[Delete this artist]", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" }, remote: true %>
+  <%= link_to "[Delete this artist]", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
 <br>
 <p class="container-fluid text-center"><%= link_to "[All Artists]", root_path %></p>

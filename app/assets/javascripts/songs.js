@@ -1,51 +1,21 @@
-function createSong(title, year) {
-  var newSong = { title: title, year: year };
+function createSong(artist_id) {
+  var title = $("#addTitle").val();
+  var year = $("#addYear").val();
 
   $.ajax({
     type: "POST",
     url: "/api/artists/" + artist_id + "/songs",
     data: JSON.stringify({
-      song: newSong
+      song_title: title,
+      song_year: year
     }),
     contentType: "application/json",
     dataType: "json"
   })
   .done(function(data) {
-    var rowId = data.id;
-
-    var $delBtn = $('<a href="#" class="btn btn-default" id="del-button">Delete</a>');
-
-    var tableRow = $('<tr class="song"></tr>')
-      .attr('data-id', rowId)
-      .append($('<td>').append($('<p>')).html(title))
-      .append($('<td>').append($('<p>')).html(year))
-      .append($('<td>').append($delBtn.bind('click', deleteSong )));
-
-    $('#table').find($('tr')).first().after(tableRow);
-  })
-  .fail(function(error) {
-    console.log(error);
-
-    error_message = error.responseJSON.title[0];
-    showError(error_message);
+    location.reload();
   });
 }
-
-function showError(message) {
-  var errorHelpBlock = $('<span class="help-block"></span>')
-    .attr('id', 'error_message')
-    .text(message);
-
-    $("#formgroup-title")
-    .addClass("has-error")
-    .append(errorHelpBlock);
-  }
-
- function submitSong(event) {
-   event.preventDefault();
-   createsong($("#song_title").val());
-   $("#song_title").val(null);
- }
 
  function deleteSong(songId) {
    $.ajax({
@@ -62,6 +32,6 @@ function showError(message) {
 
 
  $(document).ready(function() {
-   $("form").bind('submit', submitSong);
+   $("#songForm").hide();
    $(".delete-song").bind('click', deleteSong);
  });

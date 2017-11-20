@@ -20,22 +20,14 @@
       <tr>"<%= song.title %>"</tr>
       <tr>Year of release: <%= song.year %></tr>
       <td><% button_tag "[Delete this song]", class: "btn btn-default", id: "deleteButton", onclick: "deleteSong(" + song.artist.id.to_s + ", " + song.id.to_s + ")" %></td>
-
       <br>
     <% end %>
   </table>
   </div>
   <br>
+    <h4>Add Song: </h4>
   <div id="songForm">
-    <label>Title:</label>
-    <input id="addTitle" type="text" class="form-control" placeholder="Song title">
-
-    <label>Year:</label>
-    <input id="addYear" type="number" class="form-control" placeholder="2017">
-  <hr>
-    <div>
-      <%= button_tag "Create Song", class: "btn btn-default", id: "saveButton", onclick: 'createSong(' + @artist.id.to_s + ')' %>
-   </div>
+      <%= render "songs/form" %>
   </div>
 
   <br>

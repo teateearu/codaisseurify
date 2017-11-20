@@ -33,12 +33,7 @@ function deleteSong(artist_id, song_id) {
   }
 }
 
-
- $(document).ready(function() {
-   $("#songForm").hide();
-   $("#listSongs").show();
-   $("#addButton").click(function(){
-     $("#listSongs").hide();
-     $("#songForm").show();
-   });
- });
+$(document).ready(function() {
+  $("form").bind('create', createSong);
+  $(".delete-song").bind('click', deleteSong);
+});

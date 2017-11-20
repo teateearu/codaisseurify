@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
     namespace :api do
       resources :artists do
-        resources :songs, only: [:create, :destroy]
+        resources :songs, only: [:index, :create, :destroy, :show]
       end
     end
 end

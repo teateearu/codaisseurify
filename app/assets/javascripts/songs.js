@@ -25,8 +25,8 @@ function deleteSong(artist_id, song_id) {
       type: "DELETE",
       url: '/api/artists/' + artist_id + '/songs/' + song_id,
       contentType: "application/json",
-      dataType: "json"})
-
+      dataType: "json"
+    })
     .done(function(data) {
       location.reload();
     });

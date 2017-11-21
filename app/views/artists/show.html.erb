@@ -19,7 +19,7 @@
     <% @artist.songs.each do |song| %>
       <tr>"<%= song.title %>"</tr>
       <tr>Year of release: <%= song.year %></tr>
-      <td><% button_tag "[Delete this song]", class: "btn btn-default", id: "deleteButton", onclick: "deleteSong(" + song.artist.id.to_s + ", " + song.id.to_s + ")" %></td>
+      <td><% link_to "[Delete this song]", class: "btn btn-default", id: "deleteButton", onclick: "deleteSong" %></td>
       <br>
     <% end %>
   </table>
